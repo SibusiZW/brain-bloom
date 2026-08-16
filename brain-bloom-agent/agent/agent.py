@@ -58,8 +58,11 @@ idea_workflow = AgentWorkflow(
     root_agent='orchestrator_agent'
 )
 
-async def run_workflow(query: str):
-    response = await idea_workflow.run(user_msg=query)
-    print(str(response))
+async def run_workflow(query: str, session_id: str):
+    memory = Memory.from_defaults(
+        session_id=session_id,
+        async_database_uri='sqlite+aiosqlite:///history.db'
+    )
 
-asyncio.run(run_workflow("I have an idea of slack for AI agents give me the technical feasibility"))
+    response = await idea_workflow.run(user_msg=query, memory=memory)
+    return str(response)
