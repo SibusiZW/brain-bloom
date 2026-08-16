@@ -1,5 +1,3 @@
-"use client"
-
 import { LoginForm } from "@/components/login-form"
 import { Flower } from "lucide-react"
 
