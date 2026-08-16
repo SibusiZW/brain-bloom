@@ -31,3 +31,11 @@ target_user_agent = ReActAgent(
     system_prompt=prompts.TARGET_USER_AGENT_PROMPT,
     tools=search_tools
 )
+
+monetization_agent = ReActAgent(
+    name='monetization_agent',
+    llm=llm,
+    description="A monetization agent",
+    system_prompt=prompts.MONETIZATION_AGENT_PROMPT,
+    tools=search_tools
+)
