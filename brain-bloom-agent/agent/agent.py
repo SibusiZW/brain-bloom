@@ -23,3 +23,11 @@ technical_feasibility_agent = ReActAgent(
     system_prompt=prompts.TECHNICAL_FEASIBILITY_AGENT_PROMPT,
     tools=search_tools
 )
+
+target_user_agent = ReActAgent(
+    name='target_user_agent',
+    llm=llm,
+    description="A target user agent",
+    system_prompt=prompts.TARGET_USER_AGENT_PROMPT,
+    tools=search_tools
+)
