@@ -1,5 +1,5 @@
 llama-index
-llama-index-llms-huggingface-api
+llama-index-llms-google-genai
 llama-index-tools-tavily-research
 python-dotenv
 fastapi

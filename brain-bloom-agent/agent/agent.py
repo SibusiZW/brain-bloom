@@ -1,4 +1,4 @@
-from llama_index.llms.huggingface_api import HuggingFaceInferenceAPI
+from llama_index.llms.google_genai import GoogleGenAI
 from llama_index.core.agent.workflow import ReActAgent, AgentWorkflow
 from llama_index.core.memory import Memory
 import prompts
@@ -9,11 +9,7 @@ import asyncio
 
 load_dotenv()
 
-llm = HuggingFaceInferenceAPI(
-    model_name='Qwen/Qwen2.5-7B-Instruct',
-    token=os.getenv('HF_TOKEN'),
-    temperature=0.7
-)
+llm = GoogleGenAI()
 
 # AGENTS
 
@@ -61,3 +57,9 @@ idea_workflow = AgentWorkflow(
     agents=[orchestrator_agent, technical_feasibility_agent, target_user_agent, monetization_agent, biggest_risks_agent],
     root_agent='orchestrator_agent'
 )
+
+async def run_workflow(query: str):
+    response = await idea_workflow.run(user_msg=query)
+    print(str(response))
+
+asyncio.run(run_workflow("I have an idea of slack for AI agents give me the technical feasibility"))
