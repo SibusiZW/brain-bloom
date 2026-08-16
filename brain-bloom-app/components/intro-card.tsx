@@ -13,7 +13,7 @@ export default function IntroCard() {
     return (
         <div className="w-full max-w-[450px] bg-white rounded-md p-4">
             <h1 className="text-3xl font-serif mb-4">Brain<span className="text-blue-500">Bloom</span></h1>
-            { session ? <Button className={'mb-3 bg-blue-500 w-full'}></Button> : <Button onClick={() => router.push('/auth')} className={'mb-3 bg-blue-500 w-full'}><LogIn /> Log in now!</Button> }
+            { session ? <Button onClick={() => router.push('/dashboard')} className={'mb-3 bg-blue-500 w-full'}><Brain /> experience the future brainstorming</Button> : <Button onClick={() => router.push('/auth')} className={'mb-3 bg-blue-500 w-full'}><LogIn /> Log in now!</Button> }
             <p className="text-gray-500">&copy; tafadzwa sibanda {new Date().getFullYear()}</p>
         </div>
     )
