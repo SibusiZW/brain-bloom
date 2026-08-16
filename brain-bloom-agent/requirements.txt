@@ -3,3 +3,4 @@ llama-index-llms-huggingface-api
 llama-index-tools-tavily-research
 python-dotenv
 fastapi
+asyncpg
