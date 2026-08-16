@@ -48,3 +48,11 @@ biggest_risks_agent = ReActAgent(
     system_prompt=prompts.BIGGEST_RISKS_AGENT_PROMPT,
     tools=search_tools
 )
+
+orchestrator_agent = ReActAgent(
+    name='orchestrator_agent',
+    llm=llm,
+    description="The orchestrator agent",
+    system_prompt=prompts.ORCHESTRATOR_AGENT_PROMPT,
+    can_handoff_to=['technical_feasibility_agent', 'target_user_agent', 'monetization_agent', 'biggest_risks_agent']
+)
