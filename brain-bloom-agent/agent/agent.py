@@ -56,3 +56,8 @@ orchestrator_agent = ReActAgent(
     system_prompt=prompts.ORCHESTRATOR_AGENT_PROMPT,
     can_handoff_to=['technical_feasibility_agent', 'target_user_agent', 'monetization_agent', 'biggest_risks_agent']
 )
+
+idea_workflow = AgentWorkflow(
+    agents=[orchestrator_agent, technical_feasibility_agent, target_user_agent, monetization_agent, biggest_risks_agent],
+    root_agent='orchestrator_agent'
+)
