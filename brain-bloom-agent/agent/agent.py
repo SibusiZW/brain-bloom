@@ -5,6 +5,7 @@ import prompts
 from tools import search_tools
 from dotenv import load_dotenv
 import os
+import asyncio
 
 load_dotenv()
 
@@ -37,5 +38,13 @@ monetization_agent = ReActAgent(
     llm=llm,
     description="A monetization agent",
     system_prompt=prompts.MONETIZATION_AGENT_PROMPT,
+    tools=search_tools
+)
+
+biggest_risks_agent = ReActAgent(
+    name='biggest_risks_agent',
+    llm=llm,
+    description="The biggest risks agents",
+    system_prompt=prompts.BIGGEST_RISKS_AGENT_PROMPT,
     tools=search_tools
 )
