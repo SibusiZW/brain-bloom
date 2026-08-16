@@ -4,3 +4,4 @@ llama-index-tools-tavily-research
 python-dotenv
 fastapi
 aiosqlite
+uvicorn
