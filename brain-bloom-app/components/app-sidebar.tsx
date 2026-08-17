@@ -43,7 +43,7 @@ export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sideb
         <BotIcon
         />
       ),
-      items: conversations?.map((c) => c ? { title: c.title, url: `/chat/${c.id}` } : c),
+      items: conversations?.map((c) => c ? { title: c.title, url: `/dashboard/chat/${c.id}` } : c),
     },
   ],
   }
