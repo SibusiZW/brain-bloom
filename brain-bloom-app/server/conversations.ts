@@ -28,3 +28,12 @@ export async function getConversations() {
 export async function deleteConversation(id: string) {
     await db.delete(conversations).where(eq(conversations.id, id));
 }
+
+export async function wipeConversations() {
+    const session = await getSession();
+    const userId = session?.user.id;
+
+    if (userId) {
+        await db.delete(conversations).where(eq(conversations.userId, userId));
+    }
+}
