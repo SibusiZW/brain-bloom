@@ -1,5 +1,5 @@
 import { relations } from "drizzle-orm";
-import { pgTable, text, timestamp, boolean, index } from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp, boolean, index, uuid } from "drizzle-orm/pg-core";
 
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
@@ -91,3 +91,20 @@ export const accountRelations = relations(account, ({ one }) => ({
     references: [user.id],
   }),
 }));
+
+export const conversations = pgTable('conversations', {
+  id: uuid().defaultRandom().primaryKey(),
+  title: text().notNull().unique(),
+  userId: text().references(() => user.id, { onDelete: 'cascade' }).notNull(),
+  createdAt: timestamp().defaultNow()
+})
+
+export const messages = pgTable('messages', {
+  id: uuid().defaultRandom().primaryKey(),
+  conversationId: uuid().references(() => conversations.id, { onDelete: 'cascade' }).notNull(),
+  humanMessage: text().notNull(),
+  aiMessage: text().notNull(),
+  createdAt: timestamp().defaultNow()
+})
+
+export type Message = typeof messages.$inferSelect;
