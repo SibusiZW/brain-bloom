@@ -10,6 +10,9 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "./ui/toast";
 import { useRouter } from "next/navigation";
+import { generateResponse, generateTitle } from "@/server/ai";
+import { createConversation } from "@/server/conversations";
+import { createMessage } from "@/server/messages";
 
 
 export default function ChatBox() {
@@ -18,7 +21,30 @@ export default function ChatBox() {
   const router = useRouter();
 
   async function handleSend() {
+    if (!message.trim()) {
+      toast.add({
+        type: 'warning',
+        title: 'Please enter prompt'
+      });
 
+      return;
+    }
+
+    setLoading(true);
+
+    const title = await generateTitle(message);
+    const conversation = await createConversation(title);
+
+    const conversationId = conversation?.id;
+
+    if (conversationId) {
+
+      const response = await generateResponse(message, conversationId);
+
+      await createMessage(conversationId, response.ai, response.human);
+      setLoading(false);
+      setMessage("");
+    }
   }
 
   return (
@@ -30,7 +56,7 @@ export default function ChatBox() {
           <Textarea
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            placeholder="Ask anything about physics!"
+            placeholder="Drop your one-liner here!!"
             className="
               min-h-[180px]
               w-full
