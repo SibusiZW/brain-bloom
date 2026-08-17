@@ -1,4 +1,5 @@
 llama-index
+pandas>=2.0.0,<2.3.0
 llama-index-llms-featherlessai
 llama-index-tools-tavily-research
 python-dotenv
