@@ -11,7 +11,8 @@ export async function generateTitle(prompt: string) {
                 { role: 'system', content: "Your job is to generate a title of a chat based on the prompt... You should provide a short and concise title for the chat based on the prompt you have received from the user.. You are to only accept the prompt on its own.. You should only give output of the title of the chat on its own don't return any other text.. Use plain text not Markdown" },
                 { role: 'user', content: prompt }
 
-            ]
+            ],
+            model: 'google/gemma-4-31b-it'
         }
     })
 
