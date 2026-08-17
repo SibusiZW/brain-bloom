@@ -1,9 +1,10 @@
 'use server';
 
-import { OpenRouter } from '@openrouter/sdk'
+import { OpenRouter } from '@openrouter/sdk';
+import axios from 'axios';
 
 export async function generateTitle(prompt: string) {
-    const client = new OpenRouter({ apiKey: process.env.OPENROUTER_API_KEY! })
+    const client = new OpenRouter({ apiKey: process.env.OPENROUTER_API_KEY! });
 
     const response = await client.chat.send({
         chatRequest: {
@@ -14,7 +15,19 @@ export async function generateTitle(prompt: string) {
             ],
             model: 'google/gemma-4-31b-it'
         }
-    })
+    });
 
-    return (response as any).choices[0].message.content ?? "Error"
+    return (response as any).choices[0].message.content ?? "Error";
+}
+
+export async function generateResponse(query: string, sessionId: string) {
+    interface ApiResponse {
+        human: string,
+        ai: string,
+        sessionId: string
+    };
+
+    const response = await axios.get<ApiResponse>(`${process.env.BASE_API_URL}/run?query=${query}&session_id=${sessionId}`);
+    
+    return response.data;
 }
