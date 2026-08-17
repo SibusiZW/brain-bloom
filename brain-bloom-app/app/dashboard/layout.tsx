@@ -2,6 +2,7 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { getSession } from "@/server/auth"
 import HomePage from "../page";
 import { AppSidebar } from "@/components/app-sidebar";
+import ThemeToggler from "@/components/theme-toggler";
 
 export default async function DashboardLayout({ children }: LayoutProps<"/dashboard">) {
 
@@ -12,7 +13,10 @@ export default async function DashboardLayout({ children }: LayoutProps<"/dashbo
             { session ? <SidebarProvider>
                 <AppSidebar />
                 <div className="flex flex-col w-full p-3">
-                    <SidebarTrigger />
+                    <div className="flex">
+                        <SidebarTrigger />
+                        <ThemeToggler />
+                    </div>
                     {children}
                 </div>
             </SidebarProvider> : <HomePage /> }
