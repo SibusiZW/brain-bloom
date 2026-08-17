@@ -24,3 +24,7 @@ export async function getConversations() {
         return allConversations;
     }
 }
+
+export async function deleteConversation(id: string) {
+    await db.delete(conversations).where(eq(conversations.id, id));
+}

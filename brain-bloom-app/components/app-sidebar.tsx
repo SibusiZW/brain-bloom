@@ -28,7 +28,7 @@ export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sideb
       items: [
         {
           title: "Manage chats",
-          url: "#",
+          url: "/dashboard/manage-chats",
         },
         {
           title: "Wipe conversation history",
