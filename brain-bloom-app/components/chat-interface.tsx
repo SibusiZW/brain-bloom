@@ -33,6 +33,7 @@ export default function ChatInteface({ messages, conversationId }: { messages: M
     await createMessage(conversationId, res.ai, res.human)
 
     setLoading(false);
+    setMessage("");
     router.refresh()
   }
 
