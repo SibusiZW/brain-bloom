@@ -38,9 +38,9 @@ export default function ChatInteface({ messages, conversationId }: { messages: M
   }
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex h-full min-h-0 flex-1 flex-col overflow-hidden">
       {/* Chat area */}
-      <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-6 pb-40 pt-16">
+      <main className="mx-auto flex w-full min-h-0 max-w-3xl flex-1 flex-col overflow-y-auto px-6 pb-40 pt-16">
         <div className="space-y-8">
           {messages.map((m) => <div key={m.id}>
             <UserMessage content={m.humanMessage} />
@@ -50,7 +50,7 @@ export default function ChatInteface({ messages, conversationId }: { messages: M
       </main>
 
       {/* Composer */}
-      <div className="fixed bottom-0 left-0 right-0 px-4 pb-6 pt-10">
+      <div className="px-4 pb-6 pt-10">
         <div className="mx-auto max-w-3xl">
           <div className="relative rounded-[28px] border shadow-sm transition-shadow focus-within:shadow-md">
             <Textarea
