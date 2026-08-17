@@ -51,7 +51,7 @@ export default function ChatBox() {
     <div className="w-full max-w-5xl mx-auto px-4">
       <h1 className="text-center mb-3 text-4xl font-serif">Time to <span className="text-blue-500">lock</span> in!</h1>
       {/* Chat Input */}
-      <div className="rounded-[28px] border border-gray-200 bg-white shadow-sm transition-all focus-within:border-gray-300 focus-within:shadow-md">
+      <div className="rounded-[28px] border border-gray-200 shadow-sm transition-all focus-within:border-gray-300 focus-within:shadow-md">
         <div className="relative">
           <Textarea
             value={message}

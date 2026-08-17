@@ -38,7 +38,7 @@ export default function ChatInteface({ messages, conversationId }: { messages: M
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-white">
+    <div className="flex min-h-screen flex-col">
       {/* Chat area */}
       <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-6 pb-40 pt-16">
         <div className="space-y-8">
@@ -50,15 +50,15 @@ export default function ChatInteface({ messages, conversationId }: { messages: M
       </main>
 
       {/* Composer */}
-      <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-t from-white via-white to-transparent px-4 pb-6 pt-10">
+      <div className="fixed bottom-0 left-0 right-0 px-4 pb-6 pt-10">
         <div className="mx-auto max-w-3xl">
-          <div className="relative rounded-[28px] border bg-white shadow-sm transition-shadow focus-within:shadow-md">
+          <div className="relative rounded-[28px] border shadow-sm transition-shadow focus-within:shadow-md">
             <Textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="What's next??"
               rows={1}
-              className="min-h-[120px] resize-none border-0 bg-transparent px-5 pb-16 pt-5 pr-16 text-[15px] shadow-none focus-visible:ring-0"
+              className="min-h-[120px] resize-none border-0 px-5 pb-16 pt-5 pr-16 text-[15px] focus-visible:ring-0"
             />
 
             {/* ONLY BUTTON IN THE COMPOSER */}
