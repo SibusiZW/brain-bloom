@@ -44,6 +44,7 @@ export default function ChatBox() {
       await createMessage(conversationId, response.ai, response.human);
       setLoading(false);
       setMessage("");
+      router.push(`/dashboard/chat/${conversationId}`);
     }
   }
 
