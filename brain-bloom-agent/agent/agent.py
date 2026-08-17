@@ -1,15 +1,14 @@
-from llama_index.llms.google_genai import GoogleGenAI
+from llama_index.llms.featherlessai import FeatherlessLLM
 from llama_index.core.agent.workflow import ReActAgent, AgentWorkflow
 from llama_index.core.memory import Memory
 from . import prompts
 from .tools import search_tools
 from dotenv import load_dotenv
 import os
-import asyncio
 
 load_dotenv()
 
-llm = GoogleGenAI()
+llm = FeatherlessLLM(model='Qwen/Qwen2.5-0.5B-Instruct', api_key=os.getenv('FEATHERLESS_API_KEY'))
 
 # AGENTS
 
