@@ -32,7 +32,7 @@ export async function AppSidebar({ ...props }: React.ComponentProps<typeof Sideb
         },
         {
           title: "Wipe conversation history",
-          url: "#",
+          url: "/dashboard/wipe-chats",
         },
       ],
     },
